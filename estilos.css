@@ -19,32 +19,38 @@ header {
     text-align: center;
 }
 
-header h1 {
-    margin-bottom: 5px;
-}
-
-aside {
+.nav {
     background-color: #ddd;
     padding: 15px;
-    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 50px;
 }
 
-aside ul {
-    list-style: none;
-}
-
-aside ul li {
-    margin: 10px 0;
-}
-
-aside a {
-    text-decoration: none;
+.nav a {
     color: #333;
+    text-decoration: none;
     font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
 }
 
-aside a:hover {
-    color: #0066cc;
+.nav a:hover {
+    background: radial-gradient(circle,rgba(4, 123, 196, 1) 26%, rgba(7, 62, 156, 1) 100%);
+    color: white;
+}
+
+.portada {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.h{
+    display: flex;
+    flex-direction: row;
 }
 
 section {
