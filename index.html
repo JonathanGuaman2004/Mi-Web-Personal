@@ -1,36 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Web Personal</title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <header>
-        <h1>Mi Web Personal</h1>
-        <h2>por Jonathan Steven Guamán Maza</h2>
-    </header>
-    <hr>
-    <aside>
-        <div class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="2_quienSoy.html">Biografía</a>
-            <a href="3_experienciaLab.html">Experiencia Laboral</a>
-            <a href="4_portafolio.html">Portafolio</a>
-            <a href="5_contactame.html">Contáctame</a>
-        </div>
-    </aside>
-    <hr>
-    <section>
-        <h2>Bienvenido a mi Web Personal</h2>
-        <p>¡Hola! Soy Jonathan Steven Guamán Maza, un apasionado por la tecnología y el desarrollo de software.</p>
-    </section>
-</body>
-<footer>
-    <hr>
-    <p>&copy; 2024 Jonathan Steven Guamán Maza. Todos los derechos reservados.</p>
-</footer>
-</html>
+/* Gamificación: misiones guardadas en el navegador de cada visitante */
+(function () {
+  var KEY = "jg-misiones";
+  var TOTAL = 5;
+  var TITULOS = ["Visitante", "Explorador", "Explorador", "Colaborador", "Colaborador", "Perfil completo"];
+  var hechas = leer();
 
+  function leer() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
+  }
+  function guardar() {
+    try { localStorage.setItem(KEY, JSON.stringify(hechas)); } catch (e) {}
+  }
+  function aviso(texto) {
+    var t = document.createElement("div");
+    t.className = "toast";
+    t.setAttribute("role", "status");
+    t.textContent = texto;
+    document.body.appendChild(t);
+    setTimeout(function () { t.remove(); }, 3500);
+  }
+  function pintar() {
+    var n = hechas.length;
+    document.querySelectorAll(".xp-count").forEach(function (e) { e.textContent = n + "/" + TOTAL + " misiones · " + n * 20 + " XP"; });
+    document.querySelectorAll(".xp-title").forEach(function (e) { e.textContent = TITULOS[n]; });
+    document.querySelectorAll(".bar i").forEach(function (e) { e.style.width = (n / TOTAL * 100) + "%"; });
+    document.querySelectorAll("[data-quest]").forEach(function (li) {
+      li.classList.toggle("done", hechas.indexOf(li.dataset.quest) > -1);
+    });
+  }
+  function marcar(id) {
+    if (hechas.indexOf(id) > -1) return;
+    hechas.push(id);
+    guardar();
+    pintar();
+    aviso(hechas.length === TOTAL ? "🏆 Insignia desbloqueada: Perfil completo" : "+20 XP · Misión cumplida (" + hechas.length + "/" + TOTAL + ")");
+  }
 
+  if (document.body.dataset.visit) marcar(document.body.dataset.visit);
+  document.querySelectorAll("[data-mission-click]").forEach(function (el) {
+    el.addEventListener("click", function () { marcar(el.dataset.missionClick); });
+  });
+  var form = document.querySelector("form");
+  if (form) form.addEventListener("submit", function () { marcar("contacto"); });
+  pintar();
+})();
