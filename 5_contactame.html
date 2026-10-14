@@ -1,51 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contáctame</title>
-    <link rel="stylesheet" href="estilos.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contáctame | Jonathan Guamán</title>
+<meta name="description" content="Portafolio de Jonathan Steven Guamán Maza, estudiante de Ingeniería de Software en la EPN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <header>
-        <img class="portada" src="https://avatars.githubusercontent.com/u/168588278?v=4" alt="Foto de perfil">
-        <h1>Mi Web Personal</h1>
-        <h2>por Jonathan Steven Guamán Maza</h2>
-    </header>
-    <hr>
-    <aside>
-        <div class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="2_quienSoy.html">Biografía</a>
-            <a href="3_experienciaLab.html">Experiencia Laboral</a>
-            <a href="4_portafolio.html">Portafolio</a>
-            <a href="5_contactame.html">Contáctame</a>
-        </div>
-    </aside>
-    <hr>
-    <section>
-        <h2>Contáctame</h2>
-        <p>Si estás interesado en colaborar o tienes alguna pregunta, no dudes en contactarme a través del siguiente formulario:</p>
-        <form action="">
-            <label for="name">Nombres:</label><br>
-            <input type="text" id="name" name="name" required placeholder="Ingrese sus nombres..."><br><br>
-            <label for="lastName">Apellidos:</label><br>
-            <input type="text" id="lastName" name="lastName" required placeholder="Ingrese sus apellidos..."><br><br>
-            <label for="email">Correo Electrónico:</label><br>
-            <input type="email" id="email" name="email" required placeholder="example@epn.edu.ec"><br><br>
-            <label for="telefono">Teléfono:</label><br>
-            <input type="tel" id="telefono" name="telefono" placeholder="Ingrese su número de teléfono..." required pattern="[09][0-9]{9}"><br><br>
-            <label for="message">Mensaje:</label><br>
-            <textarea id="message" name="message" rows="4" cols="50" required placeholder="Ingrese el mensaje que desea enviar..."></textarea><br><br>
-            <label for="Edad">Edad:</label><br>
-            <input type="number" id="Edad" name="Edad" required placeholder="Ingrese su edad..." min="18" max="100"><br><br>
-            <input type="submit" value="Enviar">
-    </section>
+<header class="top">
+<a class="brand" href="index.html" aria-label="Inicio">JG</a>
+<nav aria-label="Principal"><a href="index.html">Inicio</a><a href="2_quienSoy.html">Biografía</a><a href="3_experienciaLab.html">Experiencia</a><a href="4_portafolio.html">Portafolio</a><a href="5_contactame.html" aria-current="page">Contáctame</a></nav>
+<div class="xp" aria-live="polite"><span class="xp-title">Visitante</span><div class="bar"><i></i></div><span class="xp-count">0/5 misiones · 0 XP</span></div>
+</header>
+<div class="page-title"><div class="wrap"><h1>Contáctame</h1></div></div>
+<main class="wrap">
+<section>
+<h2>Escríbeme</h2>
+<p>Si quieres colaborar o tienes una pregunta, completa el formulario. También puedes escribirme por <a href="https://www.linkedin.com/in/jonathan-guam%C3%A1n-b3a372326" target="_blank" rel="noopener" data-mission-click="linkedin">LinkedIn</a>.</p>
+<form action="https://formsubmit.co/TU_CORREO_AQUI" method="POST">
+<label for="name">Nombre completo</label>
+<input type="text" id="name" name="name" required autocomplete="name" placeholder="Ej. María Pérez">
+<label for="email">Correo electrónico</label>
+<input type="email" id="email" name="email" required autocomplete="email" placeholder="nombre@correo.com">
+<label for="telefono">Teléfono <small>(opcional)</small></label>
+<input type="tel" id="telefono" name="telefono" autocomplete="tel" inputmode="tel" pattern="[0-9 +()\-]{7,15}" placeholder="0991234567" title="Solo números, espacios y +, entre 7 y 15 caracteres">
+<label for="message">Mensaje</label>
+<textarea id="message" name="message" rows="5" required placeholder="¿En qué puedo ayudarte?"></textarea>
+<button class="btn btn-dark" type="submit">Enviar mensaje</button>
+</form>
+</section>
+</main>
+<footer>&copy; 2026 Jonathan Steven Guamán Maza. Todos los derechos reservados.</footer>
+<script src="script.js"></script>
 </body>
-<footer>
-    <hr>
-    <p>&copy; 2024 Jonathan Steven Guamán Maza. Todos los derechos reservados.</p>
-</footer>
 </html>
-
-
