@@ -1,46 +1,43 @@
-/* Gamificación: misiones guardadas en el navegador de cada visitante */
-(function () {
-  var KEY = "jg-misiones";
-  var TOTAL = 5;
-  var TITULOS = ["Visitante", "Explorador", "Explorador", "Colaborador", "Colaborador", "Perfil completo"];
-  var hechas = leer();
-
-  function leer() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
-  }
-  function guardar() {
-    try { localStorage.setItem(KEY, JSON.stringify(hechas)); } catch (e) {}
-  }
-  function aviso(texto) {
-    var t = document.createElement("div");
-    t.className = "toast";
-    t.setAttribute("role", "status");
-    t.textContent = texto;
-    document.body.appendChild(t);
-    setTimeout(function () { t.remove(); }, 3500);
-  }
-  function pintar() {
-    var n = hechas.length;
-    document.querySelectorAll(".xp-count").forEach(function (e) { e.textContent = n + "/" + TOTAL + " misiones · " + n * 20 + " XP"; });
-    document.querySelectorAll(".xp-title").forEach(function (e) { e.textContent = TITULOS[n]; });
-    document.querySelectorAll(".bar i").forEach(function (e) { e.style.width = (n / TOTAL * 100) + "%"; });
-    document.querySelectorAll("[data-quest]").forEach(function (li) {
-      li.classList.toggle("done", hechas.indexOf(li.dataset.quest) > -1);
-    });
-  }
-  function marcar(id) {
-    if (hechas.indexOf(id) > -1) return;
-    hechas.push(id);
-    guardar();
-    pintar();
-    aviso(hechas.length === TOTAL ? "🏆 Insignia desbloqueada: Perfil completo" : "+20 XP · Misión cumplida (" + hechas.length + "/" + TOTAL + ")");
-  }
-
-  if (document.body.dataset.visit) marcar(document.body.dataset.visit);
-  document.querySelectorAll("[data-mission-click]").forEach(function (el) {
-    el.addEventListener("click", function () { marcar(el.dataset.missionClick); });
-  });
-  var form = document.querySelector("form");
-  if (form) form.addEventListener("submit", function () { marcar("contacto"); });
-  pintar();
-})();
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio | Jonathan Guamán</title>
+<meta name="description" content="Portafolio de Jonathan Steven Guamán Maza, estudiante de Ingeniería de Software en la EPN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="top">
+<a class="brand" href="index.html" aria-label="Inicio">JG</a>
+<nav aria-label="Principal"><a href="index.html" aria-current="page">Inicio</a><a href="2_quienSoy.html">Biografía</a><a href="3_experienciaLab.html">Experiencia</a><a href="4_portafolio.html">Portafolio</a><a href="5_contactame.html">Contáctame</a></nav>
+<div class="xp" aria-live="polite"><span class="xp-title">Visitante</span><div class="bar"><i></i></div><span class="xp-count">0/5 misiones · 0 XP</span></div>
+</header>
+<div class="hero"><div class="wrap">
+<img class="portada" src="https://avatars.githubusercontent.com/u/168588278?v=4" alt="Foto de Jonathan Guamán" width="176" height="176">
+<div><h1>Jonathan Steven Guamán Maza</h1>
+<p>Estudiante de Ingeniería de Software en la Escuela Politécnica Nacional (7.º semestre). Integro el equipo de logística del laboratorio Ludolab y me enfoco en la lógica de programación y el desarrollo frontend.</p>
+<a class="btn btn-main" href="4_portafolio.html">Ver proyectos</a>
+<a class="btn btn-alt" href="5_contactame.html">Contáctame</a>
+<a class="btn btn-alt" href="https://www.linkedin.com/in/jonathan-guam%C3%A1n-b3a372326" target="_blank" rel="noopener" data-mission-click="linkedin">LinkedIn</a></div>
+</div></div>
+<main class="wrap">
+<section>
+<h2>Misiones del perfil</h2>
+<p>Recorre el sitio para conocerme. Cada misión suma 20 XP y, al completar las cinco, desbloqueas la insignia «Perfil completo».</p>
+<ul class="quest">
+<li data-quest="bio">Conoce mi biografía</li>
+<li data-quest="exp">Revisa mi experiencia y habilidades</li>
+<li data-quest="proyecto">Abre un repositorio del portafolio</li>
+<li data-quest="linkedin">Visita mi perfil de LinkedIn</li>
+<li data-quest="contacto">Envíame un mensaje</li>
+</ul>
+</section>
+</main>
+<footer>&copy; 2026 Jonathan Steven Guamán Maza. Todos los derechos reservados.</footer>
+<script src="script.js"></script>
+</body>
+</html>
