@@ -1,0 +1,160 @@
+/* =========================================================
+   Portafolio Jonathan Guamán — Estilos con modo claro/oscuro
+   ========================================================= */
+
+/* Tokens: tema claro (por defecto) */
+:root{
+  --ink:#14213d;          /* texto principal */
+  --muted:#566075;        /* texto secundario */
+  --bg:#f4f6fb;           /* fondo de página */
+  --card:#fff;            /* fondo de tarjetas/secciones */
+  --line:#e2e6ef;         /* bordes */
+  --brand:#4e34d0;        /* color de marca */
+  --brand-d:#3a24a8;      /* marca oscura (hover) */
+  --gold:#f2a900;         /* acento / XP */
+  --ok:#0f9d7a;           /* éxito */
+  --chip-bg:#eceafb;      /* fondo de chips */
+  --chip-ink:#3a24a8;     /* texto de chips */
+  --solid:#14213d;        /* superficie oscura (hero, marca, toast) */
+  --solid-ink:#fff;       /* texto sobre superficie oscura */
+  --solid-p:#d5dbea;      /* párrafo sobre superficie oscura */
+  --quest-done:#e9f8f3;   /* misión cumplida */
+  --quest-line:#b9c0d4;   /* borde de misión / input */
+  --step-last:#fff8e6;    /* último nivel (inglés) */
+  --input-bg:#fff;        /* fondo de inputs */
+  --shadow:0 2px 10px rgba(20,33,61,.06);
+  --r:14px;
+}
+
+/* Tokens: tema oscuro */
+[data-theme="dark"]{
+  --ink:#e8ecf7;
+  --muted:#a3adc4;
+  --bg:#0e1424;
+  --card:#161d33;
+  --line:#273049;
+  --brand:#8f7bff;
+  --brand-d:#a997ff;
+  --gold:#ffc233;
+  --ok:#2ec49b;
+  --chip-bg:#241f4d;
+  --chip-ink:#c3b8ff;
+  --solid:#0a0f1c;
+  --solid-ink:#eef2ff;
+  --solid-p:#c9d2e8;
+  --quest-done:#0f2a24;
+  --quest-line:#3a4362;
+  --step-last:#2a2313;
+  --input-bg:#0e1424;
+  --shadow:0 2px 12px rgba(0,0,0,.35);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Source Sans 3",Arial,sans-serif;font-size:1.0625rem;line-height:1.65;color:var(--ink);background:var(--bg);transition:background .2s,color .2s}
+h1,h2,h3{font-family:Sora,Arial,sans-serif;line-height:1.2}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+
+/* Enlace de salto (accesibilidad) */
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{position:fixed;left:1rem;top:1rem;z-index:30;background:var(--gold);color:#14213d;padding:.7rem 1.2rem;border-radius:10px;font-weight:600;text-decoration:none;box-shadow:var(--shadow)}
+
+/* Barra superior: navegación + progreso + tema */
+.top{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.25rem;padding:.6rem 1.25rem}
+.brand{font:700 1.1rem Sora,Arial,sans-serif;background:var(--solid);color:var(--solid-ink);text-decoration:none;border-radius:10px;padding:.35rem .7rem}
+.top nav{display:flex;flex-wrap:wrap;gap:.25rem;flex:1}
+.top nav a{color:var(--ink);text-decoration:none;font-weight:600;padding:.65rem .9rem;border-radius:10px;min-height:44px;display:inline-flex;align-items:center;transition:background .15s}
+.top nav a:hover{background:var(--bg)}
+.top nav a[aria-current=page]{background:var(--brand);color:#fff}
+[data-theme="dark"] .top nav a[aria-current=page]{color:#0e1424}
+
+/* Interruptor de tema (Ley de Fitts: área mínima de 44px) */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-width:44px;min-height:44px;padding:.5rem .9rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:600 .9rem "Source Sans 3",Arial,sans-serif;cursor:pointer;transition:border-color .15s,background .15s}
+.theme-toggle:hover{border-color:var(--brand)}
+.theme-toggle .ico-moon{display:none}
+[data-theme="dark"] .theme-toggle .ico-sun{display:none}
+[data-theme="dark"] .theme-toggle .ico-moon{display:inline}
+
+/* contador XP */
+.xp{display:flex;align-items:center;gap:.6rem;font-size:.9rem;font-weight:600}
+.bar{width:7rem;height:.6rem;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--ok));transition:width .5s}
+
+/* Portada */
+.hero{background:var(--solid);color:var(--solid-ink);padding:3.5rem 0}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:2rem}
+.portada{width:11rem;height:11rem;border-radius:50%;object-fit:cover;border:5px solid var(--gold)}
+.hero h1{font-size:clamp(2rem,5vw,3rem)}
+.hero p{max-width:38rem;margin:.75rem 0 1.5rem;color:var(--solid-p)}
+.page-title{background:var(--solid);color:var(--solid-ink);padding:2rem 0}
+.page-title h1{font-size:clamp(1.6rem,4vw,2.2rem)}
+.page-title p{color:var(--solid-p)}
+
+/* Botones (grandes y claros — Ley de Fitts) */
+.btn{display:inline-flex;align-items:center;justify-content:center;font:600 1rem "Source Sans 3",Arial,sans-serif;text-decoration:none;padding:.75rem 1.4rem;border-radius:10px;border:2px solid transparent;cursor:pointer;min-height:44px;margin:0 .5rem .5rem 0;transition:background .15s,border-color .15s,color .15s}
+.btn-main{background:var(--gold);color:#14213d}
+.btn-main:hover{background:#ffc233}
+.btn-alt{border-color:var(--solid-ink);color:var(--solid-ink)}
+.btn-alt:hover{background:rgba(255,255,255,.15)}
+.btn-dark{background:var(--brand);color:#fff}
+[data-theme="dark"] .btn-dark{color:#0e1424}
+.btn-dark:hover{background:var(--brand-d)}
+
+/* Contenido */
+main{padding:2rem 0 3rem}
+section{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.75rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}
+section h2{font-size:1.4rem;margin-bottom:.75rem}
+section p{max-width:46rem;margin-bottom:.75rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.card{border:1px solid var(--line);border-radius:var(--r);padding:1.25rem;display:flex;flex-direction:column;gap:.6rem}
+.card h3{font-size:1.1rem}
+.card .btn{margin-top:auto;align-self:flex-start}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none}
+.chips li{background:var(--chip-bg);color:var(--chip-ink);font-weight:600;font-size:.9rem;padding:.2rem .75rem;border-radius:99px}
+.chips li::before{content:"✓ ";color:var(--ok)}
+
+/* Misiones */
+.quest{list-style:none;display:grid;gap:.6rem}
+.quest li{display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;border:1px dashed var(--quest-line);border-radius:10px;transition:border-color .15s,background .15s}
+.quest li::before{content:"○";font-size:1.3rem;color:var(--muted)}
+.quest li.done{border-style:solid;border-color:var(--ok);background:var(--quest-done)}
+.quest li.done::before{content:"✔";color:var(--ok)}
+
+/* Barras de progreso (inglés y habilidades) */
+.progress-block{margin-bottom:1rem}
+.progress-block .progress-head{display:flex;justify-content:space-between;gap:1rem;font-weight:600;margin-bottom:.3rem}
+.progress-block .track{height:.7rem;background:var(--line);border-radius:99px;overflow:hidden}
+.progress-block .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--gold));transition:width .8s ease}
+.progress-block .track i.ok{background:linear-gradient(90deg,var(--ok),var(--gold))}
+.skills-list{list-style:none;display:grid;gap:1rem}
+
+/* Escalera y certificados de inglés */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.75rem}
+.steps li{border:1px solid var(--line);border-top:4px solid var(--brand);border-radius:10px;padding:.8rem 1rem}
+.steps b{display:block;font-family:Sora,Arial,sans-serif}
+.steps span{color:var(--muted);font-size:.9rem}
+.certs{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.75rem}
+.certs li{border:1px solid var(--line);border-top:4px solid var(--ok);border-radius:10px;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.25rem}
+.certs li:first-child{border-top-color:var(--gold);background:var(--step-last)}
+[data-theme="dark"] .certs li:first-child{background:var(--step-last)}
+.certs b{font-family:Sora,Arial,sans-serif}
+.certs span{color:var(--muted);font-size:.9rem}
+.certs a{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:none}
+.certs a:hover{text-decoration:underline}
+
+/* Formulario */
+label{display:block;font-weight:600;margin-top:1rem}
+input,textarea{width:100%;font:inherit;padding:.75rem;margin-top:.3rem;border:1px solid var(--quest-line);border-radius:10px;background:var(--input-bg);color:var(--ink)}
+input:focus,textarea:focus{border-color:var(--brand)}
+small{color:var(--muted)}
+form .btn{margin-top:1.25rem}
+
+footer{text-align:center;color:var(--muted);padding:1.5rem 1rem 2.5rem;font-size:.95rem}
+
+/* Aviso flotante de XP */
+.toast{position:fixed;right:1rem;bottom:1rem;background:var(--solid);color:var(--solid-ink);padding:.9rem 1.2rem;border-left:6px solid var(--gold);border-radius:10px;max-width:20rem;z-index:20;box-shadow:var(--shadow)}
+
+@media(max-width:40rem){.xp{width:100%}.bar{flex:1}.hero{padding:2.5rem 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

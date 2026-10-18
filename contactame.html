@@ -4,24 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contáctame | Jonathan Guamán</title>
-<meta name="description" content="Portafolio de Jonathan Steven Guamán Maza, estudiante de Ingeniería de Software en la EPN.">
+<meta name="description" content="Formulario de contacto de Jonathan Steven Guamán Maza, estudiante de Ingeniería de Software en la EPN.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap">
-<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="css/estilos.css">
+<script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("jg-tema")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))}catch(e){}</script>
 </head>
 <body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 <header class="top">
 <a class="brand" href="index.html" aria-label="Inicio">JG</a>
-<nav aria-label="Principal"><a href="index.html">Inicio</a><a href="2_quienSoy.html">Biografía</a><a href="3_experienciaLab.html">Experiencia</a><a href="4_portafolio.html">Portafolio</a><a href="5_contactame.html" aria-current="page">Contáctame</a></nav>
+<nav aria-label="Principal"><a href="index.html">Inicio</a><a href="quienSoy.html">Biografía</a><a href="3_experienciaLab.html">Experiencia</a><a href="portafolio.html">Portafolio</a><a href="contactame.html" aria-current="page">Contáctame</a></nav>
+<button class="theme-toggle" type="button" aria-pressed="false" aria-label="Cambiar a modo oscuro"><span aria-hidden="true" class="ico-sun">☀️</span><span aria-hidden="true" class="ico-moon">🌙</span><span class="toggle-text">Oscuro</span></button>
 <div class="xp" aria-live="polite"><span class="xp-title">Visitante</span><div class="bar"><i></i></div><span class="xp-count">0/5 misiones · 0 XP</span></div>
 </header>
 <div class="page-title"><div class="wrap"><h1>Contáctame</h1></div></div>
-<main class="wrap">
+<main class="wrap" id="contenido">
 <section>
 <h2>Escríbeme</h2>
 <p>Si quieres colaborar o tienes una pregunta, completa el formulario. También puedes escribirme por <a href="https://www.linkedin.com/in/jonathan-guam%C3%A1n-b3a372326" target="_blank" rel="noopener" data-mission-click="linkedin">LinkedIn</a>.</p>
-<form action="https://formsubmit.co/TU_CORREO_AQUI" method="POST">
+<form action="https://formsubmit.co/jonathanbatalla24@hotmail.com" method="POST">
 <label for="name">Nombre completo</label>
 <input type="text" id="name" name="name" required autocomplete="name" placeholder="Ej. María Pérez">
 <label for="email">Correo electrónico</label>
@@ -35,6 +38,6 @@
 </section>
 </main>
 <footer>&copy; 2026 Jonathan Steven Guamán Maza. Todos los derechos reservados.</footer>
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
